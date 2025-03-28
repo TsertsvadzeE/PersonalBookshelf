@@ -1,6 +1,15 @@
-<h1>All Books </h1>
+{% extends 'base.html' %}
 
-{% for book in books %}
-    <h2><a href="{%url 'book_detail' book.pk %}">{{ book.title }}</a></h2>
-{% endfor %}
+{% block content %}
+<h1 class="text-center">Books</h1>
+    {% for book in books %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="card-title"><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2>
+        </div>
+    </div>
 
+    {% empty %}
+        <p>No books available</p>
+    {% endfor %}
+{% endblock %}
